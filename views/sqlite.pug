@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .container
+    .row
+      each personaje in personajes
+        .col-md-4.mb-4
+          .card
+            img.card-img-top(src=personaje.image alt=personaje.name)
+            .card-body
+              h5.card-title #{personaje.name}
+              p #{personaje.status}
+              p #{personaje.species}

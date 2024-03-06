@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container.mt-4
+    .row
+      each personaje in personajes
+        .col-md-4.mb-4
+          .card(style='width: 18rem;')
+            img.card-img-top(src=personaje.image alt=`Imagen de #{personaje.name}`)
+            .card-body
+              h5.card-title ##{personaje.id} #{personaje.name}
+              p.card-text
+                br
+                | #{personaje.gender === 'Male' ? 'Hombre' : personaje.gender === 'Female' ? 'Mujer' : 'Bicho raro'}
+                br
+                | #{new Date(personaje.created).toLocaleDateString('es-ES')}
+              form(action=`/guardar-personaje/${personaje.id}` method="post")
+                button.btn.btn-primary(type="submit") Guardar en BD
+
+
+
